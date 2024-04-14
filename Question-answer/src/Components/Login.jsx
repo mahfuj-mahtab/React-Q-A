@@ -1,28 +1,20 @@
 import React from 'react'
 
-function Register() {
+function Login() {
   return (
     <div>
         <div className="container">
         <div className="main_container">
+
             <div className="login-box">
                 <div className="left_login_box">
                     <img className="register-img" src="" alt=""/>
                 </div>
                 <div className="right_login_box">
-                    <h3 className="login_title">Sign Up</h3>
+                    <h3 className="login_title">Login </h3>
 
                     <form action="" method="POST">
-                           
-
-                        <input type="text" name="fullname" id="" placeholder="Enter Full Name"/> 
-                        <span className="material-symbols-outlined">
-                            person
-                            </span><br/>                        
-                        <input type="text" name="username" id="" placeholder="Enter User Name"/> 
-                        <span className="material-symbols-outlined">
-                            account_circle
-                            </span><br/>
+          
                         <input type="email" name="email" id="" placeholder="Enter Email Address"/>
                         <span className="material-symbols-outlined">
                             mail
@@ -32,16 +24,15 @@ function Register() {
                         <span className="material-symbols-outlined">
                             lock
                             </span>
-                            
                         <br/>
+                        <span >Forget Password? <span> <b>  <a className="a_forget" href="/recover/"> Recover Password </a></b> </span></span>
+                        <br/>
+               
                         
-                        <input type="checkbox" name="" id="" className="check-box" /><span>I read and agree to <span> <b>  Term & Condition</b> </span></span><br/>
-                    
-                        
                         <br/>
-                        <input type="submit" value="Register"/>
+                        <input type="submit" value="Login"/>
                         <br/>
-                        <span >Already Have Account? <span> <b>  <a className="a_login" href="/login/"> Login </a></b> </span></span>
+                        <span >Don't Have Account? <span > <b>  <a className="a_login" href="/signup/"> Register </a></b> </span></span>
                     </form>
                 </div>
             </div>
@@ -51,4 +42,4 @@ function Register() {
   )
 }
 
-export default Register
+export default Login

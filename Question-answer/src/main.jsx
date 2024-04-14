@@ -9,22 +9,23 @@ import {
 } from "react-router-dom";
 import Question from './Components/Question.jsx';
 import Register from './Components/Register.jsx';
+import Login from './Components/Login.jsx'
 const router = createBrowserRouter([
   {
     path: "/",
     children:[
       {
-        path: "/",
+        path: "",
         'element' : <App/>
       },
       {
         path: "register",
         'element' : <Register/>
       },
-      // {
-      //   path: "login",
-      //   'element' : <Login/>
-      // },
+      {
+        path: "login",
+        'element' : <Login/>
+      },
 
     ]
   },
