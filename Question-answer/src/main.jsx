@@ -10,6 +10,7 @@ import {
 import Question from './Components/Question.jsx';
 import Register from './Components/Register.jsx';
 import Login from './Components/Login.jsx'
+import Answer from './Components/Answer.jsx'
 const router = createBrowserRouter([
   {
     path: "/",
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
       {
         path: "login",
         'element' : <Login/>
+      },
+      {
+        path: "answer/:id",
+        'element' : <Answer/>
       },
 
     ]
