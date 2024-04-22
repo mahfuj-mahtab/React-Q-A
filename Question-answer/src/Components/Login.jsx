@@ -8,7 +8,7 @@ function Login() {
 
             <div className="login-box">
                 <div className="left_login_box">
-                    <img className="register-img" src="" alt=""/>
+                    <img className="register-img" src="/src/assets/im.jpg" alt=""/>
                 </div>
                 <div className="right_login_box">
                     <h3 className="login_title">Login </h3>
@@ -25,14 +25,14 @@ function Login() {
                             lock
                             </span>
                         <br/>
-                        <span >Forget Password? <span> <b>  <a className="a_forget" href="/recover/"> Recover Password </a></b> </span></span>
+                        <span className='forget_a' >Forget Password? <span> <b>  <a className="a_forget" href="/recover/"> Recover Password </a></b> </span></span>
                         <br/>
                
                         
                         <br/>
                         <input type="submit" value="Login"/>
                         <br/>
-                        <span >Don't Have Account? <span > <b>  <a className="a_login" href="/signup/"> Register </a></b> </span></span>
+                        <span className='forget_a' >Don't Have Account? <span > <b>  <a className="a_login" href="/signup/"> Register </a></b> </span></span>
                     </form>
                 </div>
             </div>

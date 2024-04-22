@@ -24,7 +24,7 @@ body{
     background: rgb(255, 255, 255);
     position: relative;
     border-radius: 40px;
-    box-shadow: 10px 10px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.25);
 
 }
 .left_login_box{
@@ -39,6 +39,7 @@ body{
     height: 500px;
     border-top-left-radius: 40px;
     border-bottom-left-radius: 40px;
+    object-fit:cover;
 
 }
 .right_login_box{
@@ -103,6 +104,9 @@ body{
     width: 30px;
     height: 30px;
     color: #207398;
+}
+.forget_a{
+    margin-left: 50px;
 }
 .material-symbols-outlined{
     position: absolute;

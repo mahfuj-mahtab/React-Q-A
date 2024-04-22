@@ -7,7 +7,7 @@ function Register() {
         <div className="main_container">
             <div className="login-box">
                 <div className="left_login_box">
-                    <img className="register-img" src="" alt=""/>
+                    <img className="register-img" src="/src/assets/im.jpg" alt=""/>
                 </div>
                 <div className="right_login_box">
                     <h3 className="login_title">Sign Up</h3>
@@ -41,7 +41,7 @@ function Register() {
                         <br/>
                         <input type="submit" value="Register"/>
                         <br/>
-                        <span >Already Have Account? <span> <b>  <a className="a_login" href="/login/"> Login </a></b> </span></span>
+                        <span className='forget_a'>Already Have Account? <span> <b>  <a className="a_login" href="/login/"> Login </a></b> </span></span>
                     </form>
                 </div>
             </div>
