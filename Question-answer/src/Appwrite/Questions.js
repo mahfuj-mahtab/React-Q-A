@@ -1,22 +1,27 @@
-import { Client, Account,Databases} from 'appwrite';
+import { Client, Account,Databases,Query} from 'appwrite';
 import {ID} from 'appwrite'
 export class QuestionService{
     client = new Client();
     account;
+    databases
     constructor(){
+    console.log(import.meta.env.VITE_APPWRITE_PROJECT_ID);
+
     this.client
     .setEndpoint('https://cloud.appwrite.io/v1')
     .setProject(import.meta.env.VITE_APPWRITE_PROJECT_ID); // Replace with your project ID
-    const databases = new Databases(this.client);
-   
+    
+    this.databases = new Databases(this.client);
 }
-   async createQuestion({title,content,category,user}){
-        return  promise =await this.databases.createDocument(
+async createQuestion({Title,Content,Category,User}){
+    console.log(import.meta.env.VITE_APPWRITE_DB_ID);
+        const  promise =await this.databases.createDocument(
             import.meta.env.VITE_APPWRITE_DB_ID,
             import.meta.env.VITE_APPWRITE_COLLECTION_ID,
+            ID.unique(),
           
             {
-                title,content,category,user
+                Title,Content,Category,User
     
             }
         );
@@ -28,7 +33,15 @@ export class QuestionService{
         });
     }
 
-
+    async showAllQuestions(){
+        return  await this.databases.listDocuments(
+            import.meta.env.VITE_APPWRITE_DB_ID,
+            import.meta.env.VITE_APPWRITE_COLLECTION_ID,
+            [
+                
+            ]
+        )
+    }
    
   
 }

@@ -27,12 +27,13 @@ function App() {
     //   console.log(count);
     // }
     const post = {
-      title : 'this is test 1',
-      category: 'Hacking',
-      content : 'This is test 1 content',
-      user : 'two@gmail.com'
+      Title : 'this is test 2',
+      Category: 'Hacking',
+      Content : 'This is test 1 content',
+      User : 'two@gmail.com'
     }
-    questionService.createQuestion(post)
+    
+
   }, [])
   
   return (
