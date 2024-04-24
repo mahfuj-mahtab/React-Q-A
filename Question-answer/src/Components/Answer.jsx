@@ -1,53 +1,70 @@
-import React from 'react'
+import React, { useEffect,useState } from 'react'
 import RightContainer from './RightContainer'
 import Header from './Header'
 import Banner from './Banner'
 import Footer from './Footer'
+import questionService from '../Appwrite/Questions'
+import { useParams } from 'react-router-dom'
 
 function Answer() {
+    const {id} = useParams()
+    const [question, setQuestion] = useState({})
+    useEffect(() => {
+      
+        questionService.showQuestionAnswer(id).then((post)=>{
+            setQuestion(post)
+          
+        })
+        // console.log(post);
+        // if(post){
+            
+        // }
+     
+    }, [])
+    
   return (
     <div>
         <Header/>
         <Banner/>
-            <div class="container">
-        <div class="main_container">
-            <div class="left_main_container">
+            <div className="container">
+        <div className="main_container">
+            <div className="left_main_container">
 
-                <div class="answer_details">
-                    <div class="answer_details_top">
-                        <div class="answer_details_top_left">
-                            <img src="/media/ " alt="" class="question_profile"/>
+                <div className="answer_details">
+                    <div className="answer_details_top">
+                        <div className="answer_details_top_left">
+                            <img src="/media/ " alt="" className="question_profile"/>
                         </div>
-                        <div class="answer_details_top_right">
-                            <h3 class="q_title">djfsasw</h3>
+                        <div className="answer_details_top_right">
+                            <h3 className="q_title">{question.Title}</h3>
                      
-                            <a href="/category/{{ question.cat_name }}" class="answer_category">12</a>
+                            <a href="/category/{{ question.cat_name }}" className="answer_category">{question.Category}</a>
                             
-                            <span class="time">1717</span>
-                            <span class="views"><b>View : 32</b></span>
+                            <span className="time">{question.Date}</span>
+                            <span className="views"><b>View : 32</b></span>
                         </div>
                        
                         
                     </div>
-                    <div class="answer">
-                        <p>detrails</p>
+                    <div className="answer">
+                        <p>{question.Content}</p>
                     </div>
-                    <div class="likedislike">
+                    <div className="likedislike">
                         
                     </div>
                 </div>
 
 
-                <div class="answer_section">
+                <div className="answer_section">
                     <h1>Answer Section</h1>
                
-                    <div class="answer_details2">
-                        <div class="answer_details_top2">
-                            <div class="answer_details_top_left2">
-                               <a href="/profile/user/{{ value.user}}"> <img src="/media/" alt="" class="question_profile2"/></a>
+                    <div className="answer_details2">
+                        <div className="answer_details_top2">
+                            <div className="answer_details_top_left2">
+                               <a href="/profile/user/{{ value.user}}"> <img src="/media/" alt="" className="question_profile2"/></a>
                             </div>
-                            <div class="answer_details_top_right2">
-                                <h3 class="q_title2">hgh</h3>
+                            <div className="answer_details_top_right2">
+                                <h3 className="q_title2">hgh</h3>
                          
                                 
                              
@@ -56,15 +73,15 @@ function Answer() {
                             
                         </div>
                         
-                        <div class="answer">
+                        <div className="answer">
                             <p>56</p>
                         </div>
-                        <div class="likedislikepart"> 
+                        <div className="likedislikepart"> 
                             <form action="/like/answer/{{value.ans_id}}" method="POST">
                            
                                 <button>
-                                    <span class="num">23</span>
-                        <span class="material-symbols-outlined">
+                                    <span className="num">23</span>
+                        <span className="material-symbols-outlined">
                                thumb_up
                             </span>
                         </button>
@@ -72,8 +89,8 @@ function Answer() {
                         <form action="/dislike/answer/{{value.ans_id}}" method="POST">
                         
                             <button>
-                                <span class="num">  34 </span>
-                            <span class="material-symbols-outlined">
+                                <span className="num">  34 </span>
+                            <span className="material-symbols-outlined">
                                 thumb_down
                                 </span>
                                 </button>
@@ -82,7 +99,7 @@ function Answer() {
                     </div>
                    
 
-                    <div class="ansreply">
+                    <div className="ansreply">
                         
                     </div>
 
@@ -90,15 +107,15 @@ function Answer() {
                 </div>
                 
 
-                <div class="answerformsection">
+                <div className="answerformsection">
                   
                     <form action="" method="post">
                         
                         <textarea name="answer" id="" cols="90" rows="10" placeholder="Please Enter Your Answer"></textarea>
-                        <input class="answer-btn" type="submit" value="Answer"/>
+                        <input className="answer-btn" type="submit" value="Answer"/>
                     </form>
                    
-                        <h1 class="war">You need to login to answer</h1>
+                        <h1 className="war">You need to login to answer</h1>
                     
                 </div>
 

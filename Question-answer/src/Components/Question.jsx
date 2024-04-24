@@ -23,7 +23,7 @@ function Question() {
         <img className="logo_img" src="/media/{{ value.img }}" alt=""/>
     </div></a>
     <div className="rest">
-        <a className="title_a" href="/answer/{{ value.id }}"><h3 className="question_title">{question.Title}</h3></a>
+        <a className="title_a" href={`/answer/${question.$id}`}><h3 className="question_title">{question.Title}</h3></a>
         <div className="category_section">
             <a href="/category/{{ value.cat_name }}" className="cat">{question.Category}</a>
            
