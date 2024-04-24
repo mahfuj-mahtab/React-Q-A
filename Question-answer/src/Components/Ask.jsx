@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Header from './Header'
 import Footer from './Footer'
 import Banner from './Banner'
 import { useForm } from 'react-hook-form'
 import questionService from '../Appwrite/Questions'
 import { Navigate, useNavigate } from 'react-router-dom'
+import {useSelector} from 'react-redux'
 function Ask() {
+    const authStatus = useSelector((state)=>state.auth.status)
     const navigate = useNavigate()
     const { register,
         handleSubmit,
@@ -17,6 +19,15 @@ function Ask() {
             navigate('/')
            }
         }
+    useEffect(() => {
+        if(!authStatus){
+            navigate('/login')
+
+        }
+    
+   
+    }, [])
+    
   return (
     <div>
         <Header/>

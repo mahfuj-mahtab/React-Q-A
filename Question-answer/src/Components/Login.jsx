@@ -59,7 +59,7 @@ function Login() {
                         <input type="submit" value="Login"/>
                         <br/>
                         <span className='forget_a' >Don't Have Account? <span > <b> 
-                        <Link to = "/signup" className="a_login">Login</Link>
+                        <Link to = "/signup" className="a_login">Register</Link>
                             </b> </span></span>
                     </form>
                 </div>

@@ -10,16 +10,16 @@ export class AuthService{
     this.account = new Account(this.client);
    
 }
- createAccount ({email,password,name}){
+ async createAccount ({email,password,name}){
 
-    const promise = this.account.create(ID.unique(),email, password,name);
-    promise.then(function (response) {
-            console.log(response); // Success
-            console.log('success'); // Success
-        }, function (error) {
-            console.log(error); // Failure
-            console.log('fail'); // Success
-        })
+    return await this.account.create(ID.unique(),email, password,name);
+    // promise.then(function (response) {
+    //         console.log(response); // Success
+    //         console.log('success'); // Success
+    //     }, function (error) {
+    //         console.log(error); // Failure
+    //         console.log('fail'); // Success
+    //     })
     }
     async login({email,password}){
         try {

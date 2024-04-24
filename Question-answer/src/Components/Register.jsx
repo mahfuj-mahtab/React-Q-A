@@ -1,7 +1,35 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-Link
+import React,{useEffect} from 'react'
+import { useForm } from 'react-hook-form'
+import { useDispatch } from 'react-redux'
+import { Link, useNavigate } from 'react-router-dom'
+import authService from '../Appwrite/auth'
+import { login } from '../store/authSlice'
 function Register() {
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+    const {register,handleSubmit} = useForm()
+    const signup = (data)=>{
+        try {
+            const userData = authService.createAccount(data)
+            if(userData){
+                const user = authService.getCurrentUser()
+                console.log(user);
+                if(user){
+                    dispatch(login(user))
+                    navigate('/')
+                }
+            }
+        } catch (error) {
+            console.log(error.message);
+            
+        }
+    }
+    useEffect(() => {
+      
+    
+   
+    }, [])
+    
   return (
     <div>
         <div className="container">
@@ -13,23 +41,31 @@ function Register() {
                 <div className="right_login_box">
                     <h3 className="login_title">Sign Up</h3>
 
-                    <form action="" method="POST">
+                    <form onSubmit={handleSubmit(signup)}>
                            
 
-                        <input type="text" name="fullname" id="" placeholder="Enter Full Name"/> 
+                        <input type="text" name="fullname" id="" placeholder="Enter Full Name" required   {...register('fullname',{
+                    required : true
+                })}/> 
                         <span className="material-symbols-outlined">
                             person
                             </span><br/>                        
-                        <input type="text" name="username" id="" placeholder="Enter User Name"/> 
+                        {/* <input type="text" name="username" id="" placeholder="Enter User Name"   {...register('username',{
+                    required : true
+                })}/> 
                         <span className="material-symbols-outlined">
                             account_circle
-                            </span><br/>
-                        <input type="email" name="email" id="" placeholder="Enter Email Address"/>
+                            </span><br/> */}
+                        <input type="email" name="email" id="" placeholder="Enter Email Address"   {...register('email',{
+                    required : true
+                })}/>
                         <span className="material-symbols-outlined">
                             mail
                             </span>
                         <br/>
-                        <input type="password" name="password" id="" placeholder="Enter Password"/> 
+                        <input type="password" name="password" id="" placeholder="Enter Password"   {...register('password',{
+                    required : true
+                })}/> 
                         <span className="material-symbols-outlined">
                             lock
                             </span>

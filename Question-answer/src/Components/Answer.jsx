@@ -5,10 +5,12 @@ import Banner from './Banner'
 import Footer from './Footer'
 import questionService from '../Appwrite/Questions'
 import { useParams } from 'react-router-dom'
+import {useSelector} from 'react-redux'
 
 function Answer() {
     const {id} = useParams()
     const [question, setQuestion] = useState({})
+    const authStatus = useSelector((state)=>state.auth.status)
     useEffect(() => {
       
         questionService.showQuestionAnswer(id).then((post)=>{
@@ -105,20 +107,25 @@ function Answer() {
 
 
                 </div>
-                
-
                 <div className="answerformsection">
-                  
-                    <form action="" method="post">
-                        
-                        <textarea name="answer" id="" cols="90" rows="10" placeholder="Please Enter Your Answer"></textarea>
-                        <input className="answer-btn" type="submit" value="Answer"/>
-                    </form>
-                   
-                        <h1 className="war">You need to login to answer</h1>
-                    
-                </div>
+                {authStatus?(
 
+      
+                        
+        <form action="" method="post">
+            
+            <textarea name="answer" id="" cols="90" rows="10" placeholder="Please Enter Your Answer"></textarea>
+            <input className="answer-btn" type="submit" value="Answer"/>
+        </form>
+
+           
+
+       
+                ):(
+                    <h1 className="war">You need to login to answer</h1>
+                )}
+
+                </div>
 
             </div>
            <RightContainer/>

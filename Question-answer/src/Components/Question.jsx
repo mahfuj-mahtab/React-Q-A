@@ -1,5 +1,6 @@
 import React, { useCallback ,useEffect,useState} from 'react'
 import questionService from '../Appwrite/Questions'
+import { Link } from 'react-router-dom'
 function Question() {
   const [questions, setquestions] = useState([])
   useEffect(
@@ -23,7 +24,7 @@ function Question() {
         <img className="logo_img" src="/media/{{ value.img }}" alt=""/>
     </div></a>
     <div className="rest">
-        <a className="title_a" href={`/answer/${question.$id}`}><h3 className="question_title">{question.Title}</h3></a>
+        <Link className="title_a" to={`/answer/${question.$id}`}><h3 className="question_title">{question.Title}</h3></Link>
         <div className="category_section">
             <a href="/category/{{ value.cat_name }}" className="cat">{question.Category}</a>
            
