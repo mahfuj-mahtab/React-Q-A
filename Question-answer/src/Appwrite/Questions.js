@@ -1,5 +1,6 @@
 import { Client, Account,Databases,Query} from 'appwrite';
 import {ID} from 'appwrite'
+import { Navigate } from 'react-router-dom';
 export class QuestionService{
     client = new Client();
     account;
@@ -14,7 +15,7 @@ export class QuestionService{
     this.databases = new Databases(this.client);
 }
 async createQuestion({Title,Content,Category,User= 'two@gmail.com'}){
-    console.log(import.meta.env.VITE_APPWRITE_DB_ID);
+    // console.log(import.meta.env.VITE_APPWRITE_DB_ID);
         return  await this.databases.createDocument(
             import.meta.env.VITE_APPWRITE_DB_ID,
             import.meta.env.VITE_APPWRITE_COLLECTION_ID,
@@ -28,6 +29,7 @@ async createQuestion({Title,Content,Category,User= 'two@gmail.com'}){
         
         // promise.then(function (response) {
         //     console.log(response);
+        //     Navigate('/')
         // }, function (error) {
         //     console.log(error);
         // });

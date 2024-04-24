@@ -4,20 +4,18 @@ import Footer from './Footer'
 import Banner from './Banner'
 import { useForm } from 'react-hook-form'
 import questionService from '../Appwrite/Questions'
-import { Navigate } from 'react-router-dom'
+import { Navigate, useNavigate } from 'react-router-dom'
 function Ask() {
+    const navigate = useNavigate()
     const { register,
         handleSubmit,
         watch,
         formState: { errors }} = useForm()
         const AskQuestion = (data)=>{
-           questionService.createQuestion(data).then(()=>{
-
-               Navigate("/")
+           const ask = questionService.createQuestion(data)
+           if(ask){
+            navigate('/')
            }
-           ).catch((error)=>{
-            console.log(error);
-           })
         }
   return (
     <div>
