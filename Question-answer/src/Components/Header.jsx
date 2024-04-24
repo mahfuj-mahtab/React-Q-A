@@ -1,6 +1,14 @@
-import React from 'react'
+import React,{useEffect} from 'react'
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 function Header() {
+  const authStatus = useSelector((state)=>state.auth.status)
+  useEffect(() => {
+    
+  console.log(authStatus);
+ 
+  }, [])
+  
   return (
     <div>
 
@@ -19,7 +27,13 @@ function Header() {
 
           
           {/* <a  href="/signup">Login</a> */}
-          <Link to = "/login" className="register-btn">Login</Link>
+          {authStatus == true ?(
+
+        <Link to = "/logout" className="register-btn">Logout</Link>
+          ): (
+            <Link to = "/login" className="register-btn">Login</Link>
+          )}
+          
           
           
       </div>

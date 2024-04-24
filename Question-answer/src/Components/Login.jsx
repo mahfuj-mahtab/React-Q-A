@@ -1,9 +1,12 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from "react-hook-form"
 import authService from '../Appwrite/auth'
-
+import {useDispatch} from 'react-redux'
+import {login} from '../store/authSlice'
 function Login() {
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
     const {
         register,
         handleSubmit,
@@ -17,6 +20,8 @@ function Login() {
             const userData = authService.getCurrentUser()
             if(userData){
                 console.log(userData,'is userdata');
+                dispatch(login(userData))
+                navigate("/")
             }
         }
     })
