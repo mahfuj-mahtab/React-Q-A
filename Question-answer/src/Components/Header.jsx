@@ -19,7 +19,7 @@ function Header() {
 
           
           {/* <a  href="/signup">Login</a> */}
-          <Link to = "login" className="register-btn">Login</Link>
+          <Link to = "/login" className="register-btn">Login</Link>
           
           
       </div>
