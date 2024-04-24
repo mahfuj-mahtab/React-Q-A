@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function Login() {
   return (
@@ -32,7 +33,9 @@ function Login() {
                         <br/>
                         <input type="submit" value="Login"/>
                         <br/>
-                        <span className='forget_a' >Don't Have Account? <span > <b>  <a className="a_login" href="/signup/"> Register </a></b> </span></span>
+                        <span className='forget_a' >Don't Have Account? <span > <b> 
+                        <Link to = "/signup" className="a_login">Login</Link>
+                            </b> </span></span>
                     </form>
                 </div>
             </div>

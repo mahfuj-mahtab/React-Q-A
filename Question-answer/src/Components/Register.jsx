@@ -1,5 +1,6 @@
 import React from 'react'
-
+import { Link } from 'react-router-dom'
+Link
 function Register() {
   return (
     <div>
@@ -41,7 +42,9 @@ function Register() {
                         <br/>
                         <input type="submit" value="Register"/>
                         <br/>
-                        <span className='forget_a'>Already Have Account? <span> <b>  <a className="a_login" href="/login/"> Login </a></b> </span></span>
+                        <span className='forget_a'>Already Have Account? <span> <b> 
+                        <Link to = "/login" className="a_login">Login</Link>
+                          </b> </span></span>
                     </form>
                 </div>
             </div>

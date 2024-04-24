@@ -13,9 +13,9 @@ export class QuestionService{
     
     this.databases = new Databases(this.client);
 }
-async createQuestion({Title,Content,Category,User}){
+async createQuestion({Title,Content,Category,User= 'two@gmail.com'}){
     console.log(import.meta.env.VITE_APPWRITE_DB_ID);
-        const  promise =await this.databases.createDocument(
+        return  await this.databases.createDocument(
             import.meta.env.VITE_APPWRITE_DB_ID,
             import.meta.env.VITE_APPWRITE_COLLECTION_ID,
             ID.unique(),
@@ -26,11 +26,11 @@ async createQuestion({Title,Content,Category,User}){
             }
         );
         
-        promise.then(function (response) {
-            console.log(response);
-        }, function (error) {
-            console.log(error);
-        });
+        // promise.then(function (response) {
+        //     console.log(response);
+        // }, function (error) {
+        //     console.log(error);
+        // });
     }
 
     async showAllQuestions(){

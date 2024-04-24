@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { Link } from 'react-router-dom'
 function Header() {
   return (
     <div>
@@ -7,7 +7,7 @@ function Header() {
     
   <div className="header">
       <div className="main_header">
-          <h3 className="logo"><a href="/" className="first_logo"> ASK.COM </a></h3>
+          <h3 className="logo"><Link to="/" className="first_logo"> ASK.COM </Link></h3>
           <form action="/search" method="GET">
               <input type="text" className="search" name="search" id="search" placeholder="Search Your Question"/>
               <input type="submit" value="Search" className="search_btn"/>
@@ -18,7 +18,8 @@ function Header() {
           
 
           
-          <a className="register-btn" href="/signup">Login</a>
+          {/* <a  href="/signup">Login</a> */}
+          <Link to = "login" className="register-btn">Login</Link>
           
           
       </div>

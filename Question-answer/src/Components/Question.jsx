@@ -25,11 +25,11 @@ function Question() {
     <div className="rest">
         <a className="title_a" href="/answer/{{ value.id }}"><h3 className="question_title">{question.Title}</h3></a>
         <div className="category_section">
-            <a href="/category/{{ value.cat_name }}" className="cat">Cat</a>
+            <a href="/category/{{ value.cat_name }}" className="cat">{question.Category}</a>
            
         
         </div>
-        <p className="time">12 march 2023</p>
+        <p className="time">{question.Date ? question.Date: 'No Date'}</p>
         <p className="total_ans"><b>11 Answered</b></p> 
 
     </div>

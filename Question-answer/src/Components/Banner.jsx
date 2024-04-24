@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { Link } from 'react-router-dom'
 function Banner() {
   return (
     <div>
@@ -7,7 +7,7 @@ function Banner() {
     <div className="main_banner">
         <h2>Welcome To ASK.COM</h2>
         <p>Ask Any Question And <br/> Get Answered</p>
-        <a href="/ask_question"  className="ask_question">Ask  Question</a>
+        <Link to="/ask_question"  className="ask_question">Ask  Question</Link>
     </div>
         
 </div>
