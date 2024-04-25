@@ -6,6 +6,7 @@ function Header() {
   useEffect(() => {
     
   console.log(authStatus);
+  
  
   }, [])
   

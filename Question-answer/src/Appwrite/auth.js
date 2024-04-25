@@ -1,5 +1,6 @@
 import { Client, Account} from 'appwrite';
 import {ID} from 'appwrite'
+import { useNavigate } from 'react-router-dom';
 export class AuthService{
     client = new Client();
     account;
@@ -44,7 +45,10 @@ export class AuthService{
     async logOut(){
         try {
             await this.account.deleteSessions()
+            console.log('in logout');
+           
         } catch (error) {
+            console.log('logout error');
             throw error
         }
     }

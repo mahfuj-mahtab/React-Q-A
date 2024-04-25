@@ -1,10 +1,12 @@
 import React, { useCallback ,useEffect,useState} from 'react'
 import questionService from '../Appwrite/Questions'
 import { Link } from 'react-router-dom'
+import authService from '../Appwrite/auth'
 function Question() {
   const [questions, setquestions] = useState([])
   useEffect(
     () => {
+      console.log(authService.getCurrentUser(),'current user');
       questionService.showAllQuestions().then((posts)=>{
         if(posts){
           // console.log(posts);

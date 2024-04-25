@@ -11,6 +11,7 @@ import Question from './Components/Question.jsx';
 import Register from './Components/Register.jsx';
 import Login from './Components/Login.jsx'
 import Answer from './Components/Answer.jsx'
+import Logout from './Components/Logout.jsx'
 import Ask from './Components/Ask.jsx'
 import { store } from './store/store.js'
 import {Provider} from 'react-redux'
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: "ask_question",
         'element' : <Ask/>
+      },
+      {
+        path: "logout",
+        'element' : <Logout/>
       },
 
     ]

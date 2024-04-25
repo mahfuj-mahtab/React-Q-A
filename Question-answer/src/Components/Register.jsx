@@ -12,12 +12,9 @@ function Register() {
         try {
             const userData = authService.createAccount(data)
             if(userData){
-                const user = authService.getCurrentUser()
-                console.log(user);
-                if(user){
-                    dispatch(login(user))
-                    navigate('/')
-                }
+                navigate('/login')
+          
+            
             }
         } catch (error) {
             console.log(error.message);
