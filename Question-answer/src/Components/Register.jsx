@@ -41,7 +41,7 @@ function Register() {
                     <form onSubmit={handleSubmit(signup)}>
                            
 
-                        <input type="text" name="fullname" id="" placeholder="Enter Full Name" required   {...register('fullname',{
+                        <input type="text" name="fullname" id="" placeholder="Enter Full Name" required   {...register('name',{
                     required : true
                 })}/> 
                         <span className="material-symbols-outlined">

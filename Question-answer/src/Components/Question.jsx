@@ -2,8 +2,11 @@ import React, { useCallback ,useEffect,useState} from 'react'
 import questionService from '../Appwrite/Questions'
 import { Link } from 'react-router-dom'
 import authService from '../Appwrite/auth'
+import {useSelector} from 'react-redux'
 function Question() {
   const [questions, setquestions] = useState([])
+  const userData = useSelector(state=>state.auth.userData)
+  // console.log(userData,'store user')
   useEffect(
     () => {
       console.log(authService.getCurrentUser(),'current user');

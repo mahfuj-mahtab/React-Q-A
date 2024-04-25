@@ -9,12 +9,14 @@ import {useSelector} from 'react-redux'
 function Ask() {
     const authStatus = useSelector((state)=>state.auth.status)
     const navigate = useNavigate()
+    const userData = useSelector(state=>state.auth.userData)
+    console.log(userData)
     const { register,
         handleSubmit,
         watch,
         formState: { errors }} = useForm()
         const AskQuestion = (data)=>{
-           const ask = questionService.createQuestion(data)
+           const ask = questionService.createQuestion({...data,User : userData.email})
            if(ask){
             navigate('/')
            }

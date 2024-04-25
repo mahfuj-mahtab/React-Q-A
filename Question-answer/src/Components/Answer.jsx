@@ -4,25 +4,40 @@ import Header from './Header'
 import Banner from './Banner'
 import Footer from './Footer'
 import questionService from '../Appwrite/Questions'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import {useSelector} from 'react-redux'
+import { useForm } from "react-hook-form"
 
 function Answer() {
+    const navigate = useNavigate()
+    const {
+        register,
+        handleSubmit,
+        watch,
+        formState: { errors },
+      } = useForm()
     const {id} = useParams()
     const [question, setQuestion] = useState({})
+    const [answers, setAnswer] = useState([])
     const authStatus = useSelector((state)=>state.auth.status)
+    const userData = useSelector((state)=>state.auth.userData)
     useEffect(() => {
-      
+      console.log('id type is ',typeof id);
         questionService.showQuestionAnswer(id).then((post)=>{
             setQuestion(post)
           
         })
-        // console.log(post);
-        // if(post){
-            
-        // }
+        questionService.showQuestionAllAnswer(id).then((answer)=>{
+            setAnswer(answer)
+        })
+
      
     }, [])
+    const answerSubmit = (data)=>{
+        questionService.createQuestionAnswer({...data, q_id : id,user : userData.email}).then((
+            navigate('/')
+        ))
+    }
     
   return (
     <div>
@@ -51,22 +66,23 @@ function Answer() {
                     <div className="answer">
                         <p>{question.Content}</p>
                     </div>
-                    <div className="likedislike">
+                    {/* <div className="likedislike">
                         
-                    </div>
+                    </div> */}
                 </div>
 
 
                 <div className="answer_section">
                     <h1>Answer Section</h1>
-               
+               {answers.map((ans,key)=>{
+
                     <div className="answer_details2">
                         <div className="answer_details_top2">
                             <div className="answer_details_top_left2">
                                <a href="/profile/user/{{ value.user}}"> <img src="/media/" alt="" className="question_profile2"/></a>
                             </div>
                             <div className="answer_details_top_right2">
-                                <h3 className="q_title2">hgh</h3>
+                                <h3 className="q_title2">{ans.title}</h3>
                          
                                 
                              
@@ -78,7 +94,7 @@ function Answer() {
                         <div className="answer">
                             <p>56</p>
                         </div>
-                        <div className="likedislikepart"> 
+                        {/* <div className="likedislikepart"> 
                             <form action="/like/answer/{{value.ans_id}}" method="POST">
                            
                                 <button>
@@ -97,8 +113,9 @@ function Answer() {
                                 </span>
                                 </button>
                                 </form>
-                            </div>
+                            </div> */}
                     </div>
+               })}
                    
 
                     <div className="ansreply">
@@ -112,9 +129,9 @@ function Answer() {
 
       
                         
-        <form action="" method="post">
+        <form onSubmit={handleSubmit(answerSubmit)}>
             
-            <textarea name="answer" id="" cols="90" rows="10" placeholder="Please Enter Your Answer"></textarea>
+            <textarea name="answer" id="" cols="90" rows="10" placeholder="Please Enter Your Answer" {...register("title")}></textarea>
             <input className="answer-btn" type="submit" value="Answer"/>
         </form>
 

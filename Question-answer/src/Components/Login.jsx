@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form"
 import authService from '../Appwrite/auth'
 import {useDispatch} from 'react-redux'
 import {login} from '../store/authSlice'
-function Login() {
+function  Login() {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const {
@@ -13,16 +13,17 @@ function Login() {
         watch,
         formState: { errors },
       } = useForm()
-    const Login = (data)=>{
-    authService.login(data).then((session)=>{
+    const  Login = (data)=>{
+   authService.login(data).then((session)=>{
         if(session){
+            console.log(session,'session');
+            authService.getCurrentUser().then((userData)=>{
 
-            const userData = authService.getCurrentUser()
-            if(userData){
                 console.log(userData,'is userdata');
                 dispatch(login(userData))
-                navigate("/")
-            }
+                navigate('/')
+            })
+           
         }
     })
    

@@ -14,7 +14,7 @@ export class QuestionService{
     
     this.databases = new Databases(this.client);
 }
-async createQuestion({Title,Content,Category,User= 'two@gmail.com'}){
+async createQuestion({Title,Content,Category,User}){
     // console.log(import.meta.env.VITE_APPWRITE_DB_ID);
         return  await this.databases.createDocument(
             import.meta.env.VITE_APPWRITE_DB_ID,
@@ -23,6 +23,26 @@ async createQuestion({Title,Content,Category,User= 'two@gmail.com'}){
           
             {
                 Title,Content,Category,User
+    
+            }
+        );
+        
+        // promise.then(function (response) {
+        //     console.log(response);
+        //     Navigate('/')
+        // }, function (error) {
+        //     console.log(error);
+        // });
+    }
+async createQuestionAnswer({title,q_id,user}){
+    // console.log(import.meta.env.VITE_APPWRITE_DB_ID);
+        return  await this.databases.createDocument(
+            import.meta.env.VITE_APPWRITE_DB_ID,
+            import.meta.env.VITE_APPWRITE_COLLECTION_Answer_ID,
+            ID.unique(),
+          
+            {
+                title,q_id,user
     
             }
         );
@@ -51,6 +71,15 @@ async createQuestion({Title,Content,Category,User= 'two@gmail.com'}){
             import.meta.env.VITE_APPWRITE_DB_ID,
             import.meta.env.VITE_APPWRITE_COLLECTION_ID,
             $id
+        )
+    }
+    async showQuestionAllAnswer(id,queries = [Query.equal('q_id' , id)]){
+        console.log('id is',id);
+        
+        return  await this.databases.listDocuments(
+            import.meta.env.VITE_APPWRITE_DB_ID,
+            import.meta.env.VITE_APPWRITE_COLLECTION_Answer_ID,
+           queries
         )
     }
    
