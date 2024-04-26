@@ -23,12 +23,14 @@ function Answer() {
     const userData = useSelector((state)=>state.auth.userData)
     useEffect(() => {
       console.log('id type is ',typeof id);
+      console.log('answers : ',answers);
         questionService.showQuestionAnswer(id).then((post)=>{
             setQuestion(post)
           
         })
         questionService.showQuestionAllAnswer(id).then((answer)=>{
-            setAnswer(answer)
+            // console.log('answer in hook ',answer);
+            setAnswer(answer.documents)
         })
 
      
@@ -74,15 +76,15 @@ function Answer() {
 
                 <div className="answer_section">
                     <h1>Answer Section</h1>
-               {answers.map((ans,key)=>{
+               {answers.map((ans,key)=>(
 
-                    <div className="answer_details2">
+                    <div className="answer_details2" >
                         <div className="answer_details_top2">
                             <div className="answer_details_top_left2">
                                <a href="/profile/user/{{ value.user}}"> <img src="/media/" alt="" className="question_profile2"/></a>
                             </div>
                             <div className="answer_details_top_right2">
-                                <h3 className="q_title2">{ans.title}</h3>
+                                <h3 className="q_title2">Full Name</h3>
                          
                                 
                              
@@ -92,7 +94,7 @@ function Answer() {
                         </div>
                         
                         <div className="answer">
-                            <p>56</p>
+                            <p>{ans.title}</p>
                         </div>
                         {/* <div className="likedislikepart"> 
                             <form action="/like/answer/{{value.ans_id}}" method="POST">
@@ -115,7 +117,7 @@ function Answer() {
                                 </form>
                             </div> */}
                     </div>
-               })}
+                ))} 
                    
 
                     <div className="ansreply">

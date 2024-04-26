@@ -13,6 +13,7 @@ function Question() {
       questionService.showAllQuestions().then((posts)=>{
         if(posts){
           // console.log(posts);
+          // console.log('posts is : ', posts);
           setquestions(posts.documents);
         }
       })
