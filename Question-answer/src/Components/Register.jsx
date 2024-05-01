@@ -45,7 +45,7 @@ function Register() {
         <div className="main_container">
             <div className="login-box">
                 <div className="left_login_box">
-                    <img className="register-img" src="./src/assets/im.jpg" alt=""/>
+                    <img className="register-img" src="/im.jpg" alt=""/>
                 </div>
                 <div className="right_login_box">
                     <h3 className="login_title">Sign Up</h3>
