@@ -4,20 +4,27 @@ import { useDispatch } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import authService from '../Appwrite/auth'
 import { login } from '../store/authSlice'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function Register() {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const {register,handleSubmit} = useForm()
     const signup = (data)=>{
         try {
-            const userData = authService.createAccount(data)
-            if(userData){
-                navigate('/login')
+             authService.createAccount(data).then((userData)=>{
+                if(userData){
+                    toast('Registration Done. Please Login.');
+                    navigate('/login')
+              
+                
+                }
+             }).catch((error)=>{
+                toast(error.message);
+             })
           
-            
-            }
         } catch (error) {
-            console.log(error.message);
+            toast(error.message);
             
         }
     }
@@ -83,6 +90,7 @@ function Register() {
                         <span className='forget_a'>Already Have Account? <span> <b> 
                         <Link to = "/login" className="a_login">Login</Link>
                           </b> </span></span>
+                          <ToastContainer />
                     </form>
                 </div>
             </div>

@@ -4,8 +4,10 @@ import { useForm } from "react-hook-form"
 import authService from '../Appwrite/auth'
 import {useDispatch} from 'react-redux'
 import {login} from '../store/authSlice'
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function  Login() {
+    
     useEffect(() => {
        authService.getCurrentUser().then(user=>{
         if(user){
@@ -37,6 +39,11 @@ function  Login() {
             })
            
         }
+    
+    }).catch((error)=>{
+        console.log(error.message,'in login');
+        toast(error.message);
+
     })
    
     }
@@ -50,7 +57,7 @@ function  Login() {
                     <img className="register-img" src="/src/assets/im.jpg" alt=""/>
                 </div>
                 <div className="right_login_box">
-                    <h3 className="login_title">Login </h3>
+                    <h3 className="login_title">Login</h3>
 
                     <form onSubmit={handleSubmit(Login)}>
           
@@ -74,6 +81,7 @@ function  Login() {
                         <span className='forget_a' >Don't Have Account? <span > <b> 
                         <Link to = "/signup" className="a_login">Register</Link>
                             </b> </span></span>
+                            <ToastContainer />
                     </form>
                 </div>
             </div>

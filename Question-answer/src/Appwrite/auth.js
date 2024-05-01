@@ -28,7 +28,8 @@ export class AuthService{
             // console.log(userSession.providerUid);
             return userSession
         } catch (error) {
-            console.log(`error in login :: ${error}`);
+            // console.log(`error in login :: ${error}`);
+            throw error
         }
     }
     async getCurrentUser(){
