@@ -446,6 +446,7 @@ margin-left: 45px;
   text-align: center;
   color: white;
   position: absolute;
+  top: auto;
 
 
 }
@@ -453,7 +454,7 @@ margin-left: 45px;
   width: 1920px;
   height: 85px;
   line-height: 85px;
-  background: #294B64;
+  background: #644029;
   text-align: center;
   color: white;
   

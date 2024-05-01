@@ -82,6 +82,26 @@ async createQuestionAnswer({title,q_id,user}){
            queries
         )
     }
+    async showCategoryWiseQuestions(cat,queries = [Query.equal('Category' , cat)]){
+        
+        return  await this.databases.listDocuments(
+            import.meta.env.VITE_APPWRITE_DB_ID,
+            import.meta.env.VITE_APPWRITE_COLLECTION_ID,
+           queries
+        )
+    }
+    async showSearchWiseQuestions(q,queries = [
+        Query.search('Title' , [q]),
+        // Query.search('Content' , q)
+    
+        ]){
+        
+        return  await this.databases.listDocuments(
+            import.meta.env.VITE_APPWRITE_DB_ID,
+            import.meta.env.VITE_APPWRITE_COLLECTION_ID,
+           queries
+        )
+    }
    
   
 }

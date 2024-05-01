@@ -12,9 +12,11 @@ import Register from './Components/Register.jsx';
 import Login from './Components/Login.jsx'
 import Answer from './Components/Answer.jsx'
 import Logout from './Components/Logout.jsx'
+import SearchAndCatWiseShow from './Components/SearchAndCatWiseShow.jsx'
 import Ask from './Components/Ask.jsx'
 import { store } from './store/store.js'
 import {Provider} from 'react-redux'
+import Search_wise from './Components/Search_wise.jsx'
 const router = createBrowserRouter([
   {
     path: "/",
@@ -34,6 +36,14 @@ const router = createBrowserRouter([
       {
         path: "answer/:id",
         'element' : <Answer/>
+      },
+      {
+        path: "category/:cat",
+        'element' : <SearchAndCatWiseShow/>
+      },
+      {
+        path: "search/:q",
+        'element' : <Search_wise/>
       },
       {
         path: "ask_question",

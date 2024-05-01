@@ -32,7 +32,7 @@ function Question() {
     <div className="rest">
         <Link className="title_a" to={`/answer/${question.$id}`}><h3 className="question_title">{question.Title}</h3></Link>
         <div className="category_section">
-            <a href="/category/{{ value.cat_name }}" className="cat">{question.Category}</a>
+            <Link to={`/category/${question.Category}`} className="cat">{question.Category}</Link>
            
         
         </div>

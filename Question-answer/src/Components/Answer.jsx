@@ -150,7 +150,7 @@ function Answer() {
            <RightContainer/>
         </div>
     </div>
-<Footer/>
+{/* <Footer/> */}
     </div>
   )
 }
