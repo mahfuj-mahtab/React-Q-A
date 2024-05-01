@@ -14,7 +14,7 @@ export class QuestionService{
     
     this.databases = new Databases(this.client);
 }
-async createQuestion({Title,Content,Category,User}){
+async createQuestion({Title,Content,Category,user}){
     // console.log(import.meta.env.VITE_APPWRITE_DB_ID);
         return  await this.databases.createDocument(
             import.meta.env.VITE_APPWRITE_DB_ID,
@@ -22,7 +22,7 @@ async createQuestion({Title,Content,Category,User}){
             ID.unique(),
           
             {
-                Title,Content,Category,User
+                Title,Content,Category,user
     
             }
         );

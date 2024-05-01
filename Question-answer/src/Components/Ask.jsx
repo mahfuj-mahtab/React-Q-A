@@ -6,6 +6,8 @@ import { useForm } from 'react-hook-form'
 import questionService from '../Appwrite/Questions'
 import { Navigate, useNavigate } from 'react-router-dom'
 import {useSelector} from 'react-redux'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function Ask() {
     const authStatus = useSelector((state)=>state.auth.status)
     const navigate = useNavigate()
@@ -16,12 +18,17 @@ function Ask() {
         watch,
         formState: { errors }} = useForm()
         const AskQuestion = (data)=>{
-           const ask = questionService.createQuestion({...data,User : userData.email})
-           if(ask){
-            navigate('/')
-           }
+            const ask = questionService.createQuestion({...data,user : userData.$id})
+            if(ask){
+                toast('Question Is Posted.')
+                setTimeout(() => {
+                    
+                    navigate('/')
+                }, 3000);
+            }
         }
-    useEffect(() => {
+        useEffect(() => {
+        // console.log(userData);
         if(!authStatus){
             navigate('/login')
 
@@ -54,6 +61,8 @@ function Ask() {
                     <br/>
                     <input type="submit" value="Submit" className="ask_btn"/>
                 </form>
+                <ToastContainer />
+
             </div>
         </div>
     </div>

@@ -54,7 +54,7 @@ function  Login() {
 
             <div className="login-box">
                 <div className="left_login_box">
-                    <img className="register-img" src="/src/assets/im.jpg" alt=""/>
+                    <img className="register-img" src="./src/assets/im.jpg" alt=""/>
                 </div>
                 <div className="right_login_box">
                     <h3 className="login_title">Login</h3>

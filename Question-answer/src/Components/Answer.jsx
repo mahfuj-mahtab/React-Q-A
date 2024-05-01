@@ -29,14 +29,25 @@ function Answer() {
           
         })
         questionService.showQuestionAllAnswer(id).then((answer)=>{
-            // console.log('answer in hook ',answer);
+            // const answer_document = {
+            // }
+            // const answers_document = []
+            // answer.documents.map((ans,key)=>{
+            //     answer_document['Title'] = ans.title
+
+            //     answer_document['user'] = ans.title
+            //     answers_document.push(answer_document)
+            // })
+            // console.log('answer in hook ',answers_document);
             setAnswer(answer.documents)
+            // setAnswer(answers_document)
+            // console.log('answer in hook 2',answers);
         })
 
      
     }, [])
     const answerSubmit = (data)=>{
-        questionService.createQuestionAnswer({...data, q_id : id,user : userData.email}).then((
+        questionService.createQuestionAnswer({...data, q_id : id,user : userData.$id}).then((
             navigate('/')
         ))
     }
@@ -76,6 +87,7 @@ function Answer() {
 
                 <div className="answer_section">
                     <h1>Answer Section</h1>
+                    
                {answers.map((ans,key)=>(
 
                     <div className="answer_details2" >
@@ -96,26 +108,7 @@ function Answer() {
                         <div className="answer">
                             <p>{ans.title}</p>
                         </div>
-                        {/* <div className="likedislikepart"> 
-                            <form action="/like/answer/{{value.ans_id}}" method="POST">
-                           
-                                <button>
-                                    <span className="num">23</span>
-                        <span className="material-symbols-outlined">
-                               thumb_up
-                            </span>
-                        </button>
-                        </form>
-                        <form action="/dislike/answer/{{value.ans_id}}" method="POST">
-                        
-                            <button>
-                                <span className="num">  34 </span>
-                            <span className="material-symbols-outlined">
-                                thumb_down
-                                </span>
-                                </button>
-                                </form>
-                            </div> */}
+                  
                     </div>
                 ))} 
                    
