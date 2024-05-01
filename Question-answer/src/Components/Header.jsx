@@ -5,7 +5,7 @@ function Header() {
   const authStatus = useSelector((state)=>state.auth.status)
   useEffect(() => {
     
-  console.log(authStatus);
+  // console.log(authStatus);
   
  
   }, [])

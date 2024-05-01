@@ -9,7 +9,7 @@ function Question() {
   // console.log(userData,'store user')
   useEffect(
     () => {
-      console.log(authService.getCurrentUser(),'current user');
+      // console.log(authService.getCurrentUser(),'current user');
       questionService.showAllQuestions().then((posts)=>{
         if(posts){
           // console.log(posts);

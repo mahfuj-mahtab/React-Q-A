@@ -10,7 +10,7 @@ function Ask() {
     const authStatus = useSelector((state)=>state.auth.status)
     const navigate = useNavigate()
     const userData = useSelector(state=>state.auth.userData)
-    console.log(userData)
+    // console.log(userData)
     const { register,
         handleSubmit,
         watch,

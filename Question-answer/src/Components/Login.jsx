@@ -1,10 +1,22 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from "react-hook-form"
 import authService from '../Appwrite/auth'
 import {useDispatch} from 'react-redux'
 import {login} from '../store/authSlice'
+
 function  Login() {
+    useEffect(() => {
+       authService.getCurrentUser().then(user=>{
+        if(user){
+            dispatch(login(user))
+            navigate('/')
+        }
+     
+       })
+  
+    }, [])
+    
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const {
@@ -16,10 +28,10 @@ function  Login() {
     const  Login = (data)=>{
    authService.login(data).then((session)=>{
         if(session){
-            console.log(session,'session');
+            // console.log(session,'session');
             authService.getCurrentUser().then((userData)=>{
 
-                console.log(userData,'is userdata');
+                // console.log(userData,'is userdata');
                 dispatch(login(userData))
                 navigate('/')
             })

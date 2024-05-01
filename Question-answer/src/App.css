@@ -4,7 +4,7 @@
 }
 .container{
   width: 1920px;
-  height: auto;
+  min-height: 800px;
   position: relative;
 }
 .header{

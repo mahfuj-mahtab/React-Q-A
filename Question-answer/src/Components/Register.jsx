@@ -22,10 +22,15 @@ function Register() {
         }
     }
     useEffect(() => {
+        authService.getCurrentUser().then(user=>{
+         if(user){
+             dispatch(login(user))
+             navigate('/')
+         }
       
-    
+        })
    
-    }, [])
+     }, [])
     
   return (
     <div>

@@ -22,8 +22,8 @@ function Answer() {
     const authStatus = useSelector((state)=>state.auth.status)
     const userData = useSelector((state)=>state.auth.userData)
     useEffect(() => {
-      console.log('id type is ',typeof id);
-      console.log('answers : ',answers);
+    //   console.log('id type is ',typeof id);
+    //   console.log('answers : ',answers);
         questionService.showQuestionAnswer(id).then((post)=>{
             setQuestion(post)
           

@@ -1,6 +1,7 @@
 import React from 'react'
 import Question from './Question'
 import RightContainer from './RightContainer'
+import Footer from './Footer'
 
 function Container() {
   return (
@@ -36,9 +37,9 @@ function Container() {
 
         </div>
       
-    
+      
         
-          
+       <Footer/>   
              
 </div>
     </div>

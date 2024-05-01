@@ -22,7 +22,7 @@ function Logout() {
     }, [])
     
   return (
-    <div>Hi</div>
+    <div></div>
   )
 }
 
